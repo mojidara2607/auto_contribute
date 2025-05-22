@@ -1,28 +1,35 @@
-$repoPath = "D:\wamp\www\vivek training programs\Personal\auto_contribute"
-$techFiles = @{
-    "PHP" = "index.php"
-    "Laravel" = "laravel_sample.php"
-    "CodeIgniter" = "codeigniter_sample.php"
-    "React" = "react_sample.jsx"
-    "jQuery" = "jquery_sample.js"
-    "JavaScript" = "js_sample.js"
-    "Flask" = "flask_sample.py"
-}
+# contribute_loop.ps1
 
-# Pick 2 to 3 random techs
-$selectedTechs = Get-Random -InputObject $techFiles.Keys -Count (Get-Random -Minimum 2 -Maximum 4)
+$repoPath = "C:\auto-contribute"
+$startTime = Get-Date
+$endTime = $startTime.AddHours(2)
 
-foreach ($tech in $selectedTechs) {
-    # Wait random seconds (up to 3 hours)
-    $delay = Get-Random -Minimum 600 -Maximum 10800
-    Start-Sleep -Seconds $delay
+$allFiles = @(
+    "techs\php_sample.php",
+    "techs\laravel_sample.php",
+    "techs\codeigniter_sample.php",
+    "techs\js_sample.js",
+    "techs\jquery_sample.js",
+    "techs\react_sample.jsx",
+    "techs\flask_sample.py"
+)
 
-    $file = "$repoPath\techs\$($techFiles[$tech])"
-    $timestamp = Get-Date -Format "yyyy-MM-dd HH:mm:ss"
-    Add-Content -Path $file -Value "// Auto commit for $tech at $timestamp"
+while ((Get-Date) -lt $endTime) {
+    Set-Location $repoPath
 
-    cd $repoPath
+    # Pick 2–3 random tech files
+    $selected = Get-Random -InputObject $allFiles -Count (Get-Random -Min 2 -Max 4)
+
+    foreach ($file in $selected) {
+        $timestamp = Get-Date -Format "yyyy-MM-dd HH:mm:ss"
+        Add-Content -Path "$repoPath\$file" -Value "// commit at $timestamp"
+    }
+
     git add .
-    git commit -m "Auto update $tech at $timestamp"
+    git commit -m "Auto commit at $(Get-Date -Format 'HH:mm:ss')"
     git push origin main
+
+    # Wait 5–15 minutes randomly before next commit
+    $delay = Get-Random -Minimum 300 -Maximum 900
+    Start-Sleep -Seconds $delay
 }
