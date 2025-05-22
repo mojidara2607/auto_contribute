@@ -21,7 +21,7 @@ $allFiles = @(
 $todayFiles = Get-Random -InputObject $allFiles -Count (Get-Random -Min 2 -Max 4)
 
 # Random number of commits for today (0 to 10)
-$commitCount = Get-Random -Minimum 0 -Maximum 11
+$commitCount = Get-Random -Minimum 0 -Maximum 5
 
 # Exit early if no commit today
 if ($commitCount -eq 0) {
@@ -32,7 +32,7 @@ if ($commitCount -eq 0) {
 # Generate random commit times within 2 hours
 $timeSlots = @()
 while ($timeSlots.Count -lt $commitCount) {
-    $randSeconds = Get-Random -Minimum 0 -Maximum 7200
+    $randSeconds = Get-Random -Minimum 0 -Maximum 18000
     $timeSlot = $startTime.AddSeconds($randSeconds)
     if ($timeSlot -lt $endTime) {
         $timeSlots += $timeSlot
