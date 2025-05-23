@@ -1,5 +1,5 @@
 # Path to your Git repo
-$repoPath = "C:\auto-contribute"
+$repoPath = "D:\wamp\www\vivek training programs\Personal\auto_contribute"
 Set-Location $repoPath
 
 # Max commit session duration
