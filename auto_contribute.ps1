@@ -14,7 +14,8 @@ $allFiles = @(
     "techs\js_sample.js",
     "techs\jquery_sample.js",
     "techs\react_sample.jsx",
-    "techs\flask_sample.py"
+    "techs\flask_sample.py",
+    "go_sample.go"
 )
 
 # Pick 2–3 random techs to contribute for today
