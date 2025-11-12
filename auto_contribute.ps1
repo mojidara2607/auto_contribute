@@ -9,17 +9,17 @@ $endTime = $startTime.AddHours(2)
 # File options by tech
 $allFiles = @(
     "techs\php_sample.php",
+    "techs\go_sample.go",
     "techs\laravel_sample.php",
     "techs\codeigniter_sample.php",
     "techs\js_sample.js",
     "techs\jquery_sample.js",
     "techs\react_sample.jsx",
-    "techs\flask_sample.py",
-    "techs\go_sample.go"
+    "techs\flask_sample.py"
 )
 
 # Pick 2–3 random techs to contribute for today
-$todayFiles = Get-Random -InputObject $allFiles -Count (Get-Random -Min 2 -Max 4)
+$todayFiles = Get-Random -InputObject $allFiles -Count (Get-Random -Min 2 -Max 6)
 
 # Random number of commits for today (0 to 10)
 $commitCount = Get-Random -Minimum 0 -Maximum 5
@@ -48,7 +48,7 @@ foreach ($time in $timeSlots) {
     }
 
     # Pick 1–2 files from selected techs
-    $filesToEdit = Get-Random -InputObject $todayFiles -Count (Get-Random -Min 1 -Max 3)
+    $filesToEdit = Get-Random -InputObject $todayFiles -Count (Get-Random -Min 1 -Max 4)
 
     foreach ($file in $filesToEdit) {
         $timestamp = Get-Date -Format "yyyy-MM-dd HH:mm:ss"
