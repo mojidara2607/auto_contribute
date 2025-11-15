@@ -8,10 +8,10 @@ $endTime = $startTime.AddHours(2)
 
 # File options by tech
 $allFiles = @(
-    "techs\php_sample.php",
+    # "techs\php_sample.php",
     "techs\go_sample.go",
     "techs\laravel_sample.php",
-    "techs\codeigniter_sample.php",
+    # "techs\codeigniter_sample.php",
     "techs\js_sample.js",
     "techs\jquery_sample.js",
     "techs\react_sample.jsx",
