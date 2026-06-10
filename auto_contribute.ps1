@@ -11,18 +11,20 @@ $allFiles = @(
     # "techs\php_sample.php",
     "techs\go_sample.go",
     "techs\laravel_sample.php",
-    # "techs\codeigniter_sample.php",
-    "techs\js_sample.js",
-    "techs\jquery_sample.js",
+    "techs\codeigniter_sample.php",
+    # "techs\js_sample.js",
+    # "techs\jquery_sample.js",
     "techs\react_sample.jsx",
-    "techs\flask_sample.py"
+    "techs\flask_sample.py",
+    "techs\vue_sample.vue",
+    "techs\sample_type.tsx"
 )
 
-# Pick 2–3 random techs to contribute for today
-$todayFiles = Get-Random -InputObject $allFiles -Count (Get-Random -Min 2 -Max 6)
+# Pick 3–10 random techs to contribute for today
+$todayFiles = Get-Random -InputObject $allFiles -Count (Get-Random -Min 3 -Max 10)
 
 # Random number of commits for today (0 to 10)
-$commitCount = Get-Random -Minimum 0 -Maximum 5
+$commitCount = Get-Random -Minimum 0 -Maximum 10
 
 # Exit early if no commit today
 if ($commitCount -eq 0) {
